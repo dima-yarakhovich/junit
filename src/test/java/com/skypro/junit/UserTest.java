@@ -27,14 +27,14 @@ public class UserTest {
     @Test
     @DisplayName("Проверка на равенство Login и Email")
     void checkEquality() {
-        Assertions.assertNotEquals(user.getEmail(), user.getLogin());
+        Assertions.assertTrue(user.checkEquality(user.getEmail(), user.getLogin()));
 
     }
 
     @Test
     @DisplayName("Проверка наличия '@' и '.'")
     void checkSearch() {
-        Assertions.assertTrue(user.getEmail().contains("@") & user.getEmail().contains("."));
+        Assertions.assertTrue(user.checkSearch(user.getEmail()));
     }
 
 }
