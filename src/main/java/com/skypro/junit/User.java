@@ -1,12 +1,12 @@
 package com.skypro.junit;
 
 public class User {
-    private final String login;
-    private final String email;
+    private  String login;
+    private  String email;
 
     public User(String login, String email) {
-        this.login = login;
-        this.email = email;
+            this.login = login;
+            this.email = email;
     }
 
 
@@ -18,18 +18,18 @@ public class User {
         return email;
     }
 
-    boolean checkSearch(String email) {
-        if (email.contains("@") & email.contains(".")) {
-            return true;
-        } else {
-            throw new IllegalArgumentException("Неверный email");
+
+    void checkSearch(String email) {
+        if (!email.contains("@") || !email.contains(".")) {
+            throw new EmailInvalidAddressException("Неверный email");
         }
     }
 
-    boolean checkEquality(String email, String login) {
-        if (email != login) {
-            return true;
+
+    void checkEquality(String email, String login) {
+        if (email == login){
+            throw new EmailInvalidAddressException("Введены неверные данные");
         }
-        throw new IllegalArgumentException("Введены неверные данные");
     }
+
 }
